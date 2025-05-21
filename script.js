@@ -164,21 +164,21 @@ function outer(){
     return inner;
 }
 let res = outer();
-  res();
+  res();    // 20
 
   //   array    //
  let arr= [1,23,4,5,74,234,675,234,6,7,true,false,"li", "cons", null, "rahim", "ram"];
-//   let bool = () => {
-//     for(let i=0; i< arr.length; i++){
-//         if(typeof arr[i] === 'boolean')
-//             console.log(arr[i]);
-//     }
-//   } 
-//   bool();
+  let bool = () => {
+    for(let i=0; i< arr.length; i++){
+        if(typeof arr[i] === 'boolean')
+            console.log(arr[i]);
+    }
+  } 
+  bool();   // "li", "cons", "rahim", "ram"
 
 //           print boolean equavalent value
 //   for(let i=0; i<arr.length; i++){
-//     console.log(Boolean(arr[i]));
+//     console.log(Boolean(arr[i]));   
 //   }
 
 // for(let i=0; i<arr.length; i++){
@@ -218,7 +218,7 @@ let res = outer();
 //   shift():- delete at first index, return deleted element  
    let deleteFirst =  arr1.shift();
    console.log(deleteAtLast);
-   console.log(arr1);
+   console.log(arr1);        
 
 //    splice():- insertion, deletion, updation; return deleted element; modifies original array.
 //  arr_ref.splice(a,b,c) a-starting index,b-no. of elemnt to delete; c- element to insert
@@ -230,7 +230,7 @@ let res = outer();
 //  arr_ref.slice(a,b) a- starting index, b- last index(excluded)
    let arr4 = [10,78,765,20,30,40,60,90];
    let copied = arr4.slice(1,3);
-   console.log(copied);  //[20,30]
+   console.log(copied);  //[78, 765]
    
 //  indexOf():- return index of element;if not present element then -1 .    
 //    arr_ref.indexOf(a,b) a- value to be select; b- search starting index 
@@ -239,11 +239,11 @@ let res = outer();
    
 //  includes():- checks availability in range. 
 //  arr_ref.includes(a,b); a- value to be search, b- search starting index
-     console.log(arr4.includes(20,2));
+     console.log(arr4.includes(20,2)); // true
 
 //  reverse():-reversed array; return reversed original array.
     let rev = arr4.reverse();
-    console.log(rev);
+    console.log(rev);   //(8) [90, 60, 40, 30, 20, 765, 78, 10]
 
 //  Array.isArray():-check is array or not return true,false
    let obj = {name: "dgg"};
@@ -251,41 +251,41 @@ let res = outer();
    console.log(Array.isArray(obj));  // false
 
 //  Array.form():-convert literal to array; 
-    console.log(Array.from("hello world"));
+    console.log(Array.from("hello world")); //(11) ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
 
 //  Sort():-Callback,higher order function; asc, desc
-    console.log(arr4.sort((a,b) =>a-b));
-    console.log(arr4.sort((a,b) =>b-a));
+    console.log(arr4.sort((a,b) =>a-b));// (8) [10, 20, 30, 40, 60, 78, 90, 765]
+    console.log(arr4.sort((a,b) =>b-a)); //(8) [765, 90, 78, 60, 40, 30, 20, 10]
      
 //  forEach();-iterate over elements & index.
     arr4.forEach((value,idx,arr4)=>{
         arr4[idx] = value*2;
     })
-    console.log(arr4);
+    console.log(arr4); //(8) [1530, 180, 156, 120, 80, 60, 40, 20]
 
 //   Map():-callback, iterate over array, return new array,   
 //   arr_ref.map((value,index,array) =>{  statement })
  let arr7 = [566,45,354,78,9,456,2,5,5,3,24,54];
   let new_array = arr7.map((val,idx,arr7)=>val*5);
-  console.log(new_array); 
+  console.log(new_array); // (12) [2830, 225, 1770, 390, 45, 2280, 10, 25, 25, 15, 120, 270]
   
    let result = arr7.map(val => Boolean(val));
-   console.log(result);
+   console.log(result);  //(12)[true,true,...]
    
-//   filter():-iterate over array element,return new array, 
+//   filter():-iterate over array element,return new array.
 //   arr_ref.filter((value,index,array)=>{ statement  return true})
   let arr6 = [true," ","hello",0,null,false,34,67,undefined,1,"good"];
   let results = arr6.filter((val) =>{
     if(val%2==0)
         return true;
   });
-  console.log(results);
+  console.log(results);   // (5) [' ', 0 , null, false, 34]
 
   let results_arr = arr6.filter((val)=>{
     if(val === String(val) || val === Boolean(val) )
         return true;
   })
-  console.log(results_arr);
+  console.log(results_arr);   // (5) [true,' ', 'hello',false, 'good']
   
 //   reduce():-iterate over array & result into single value. (accumulator)variable
 //  arr_ref.reduce((accumulator,value,index,array)=>{ statements },initial value of accumulator) 
@@ -294,14 +294,14 @@ let res = outer();
         acc += val;
         return acc;
     },6);
-    console.log(total);
+    console.log(total);   // 257
     
     let getMax= arr8.reduce((acc,val) =>{
         if(acc < val)
             acc = val;
         return acc;
     });
-console.log(getMax);
+console.log(getMax);   // 89
 
 // STRING  ////////////
   let str= `hello`+" world "+' hi there.';
@@ -320,7 +320,7 @@ console.log(getMax);
    console.log(str7.endsWith("u")); //6.    false last place.
    console.log(str7.charAt(8)); //7.     r  value present give
    let str9 = "Hello India is my country";
-   console.log(str9.length);
+   console.log(str9.length);     //   25
    console.log(str9.slice(3,9)); //8.   lo Ind  
    
 //    subString str_ref.substring(a,b); a-start index, b- end index;
@@ -336,12 +336,153 @@ console.log(getMax);
 
  // reverse the string 
  let string = "Bluethink";
- let arr10 = string.split("");
- arr10.reverse();
- console.log(arr10.join(""));
+ let arr10 = string.split("");   // B l u e t h i n k  
+ arr10.reverse();               // k n i h t e u l B
+ console.log(arr10.join(""));   // o/p:- knihteulB
  
  //////  OBJECT   //////////
- 
+//   ways to create Object :-
+//  let obj = { };  // empty object
+     let obj1 = {
+         key1 : "34",
+         key2: "56",
+     } ;
+  console.log(obj1);
+//   by using curley braces and literal
+  const obj3 = {
+    4 : "orange",
+    0 : "papaya",
+    3 : "yellow",
+    1 : "apple",
+  };
+  console.log(obj3);
+  
+let obj4 = {
+    "first name": "lallu",
+    "last name" : "yadav",
+    "a conveted" : "singh",
+    age :26
+}
+console.log(obj4);
+console.log(obj4["age"]);
+console.log(obj4["first name"]);
+//  by using new keyword
+let obj5 = new Object({12: 45,11:67});
+console.log(obj5);
+console.log(obj5["12"]);
+
+// by using new keyword & constructor function.
+function CreateObject(name, age, degree){
+    this.name = name;
+    this.age = age;  this.degree = degree;
+} 
+let Obj6 = new CreateObject("sgubham", 24, "BE");
+console.log("Object-1");
+console.log(Obj6);
+let obj7 = new CreateObject("vikas", 18, "B-Tech");
+console.log("object-2");
+console.log(obj7);
+// add a key value pair to object or update 
+let obj8 = {
+    name: "ravi",
+    age: 28
+}
+console.log(obj8);
+obj8.name ="sidhant";
+obj8.age = 26;
+console.log(obj8);
+// square Bracket
+obj8["name"] = "Mukesh";
+obj8["age"] = 28;
+console.log(obj8);
+
+let obj9 ={
+    name : "ABC",
+    age: 28,
+    display : function(){
+        console.log("hello world");
+    }
+} 
+console.log(obj9);
+console.log(obj9.name);
+console.log(obj9.display());
+//  
+let obj23 = {
+    name : "GHJ",
+    age : 12,
+    display : function(){
+        console.log(this.name);
+        console.log(this.age);    
+    }
+}
+console.log(obj23.display());
+console.log("-----for arrow funcction---------------------");
+let obj24 = {
+    name : "jsdf",
+    age : 13,
+    display : function(){
+        console.log(obj24.name);
+        console.log(obj24.age);    
+    }
+}
+console.log(obj24.display());
+console.log("-----for in operator---------------------");
+let obj25 = { name : "ram", age:89, city:"ayodhya"}
+console.log("city" in obj25);  //true
+console.log("country" in obj25); // false beacuse country not present.
+
+console.log("-----Copy of Object 1 shallow copy---------------------");
+// copy of object directly connected to original object is shallow copy.
+let objs = {
+    name : "abhj", age: 27, city : "noida", country :"india"
+} 
+let object2 = objs ;
+object2.age = 60;
+console.log(objs)
+console.log(object2);
+
+console.log("-----Copy of Object 2  Deep copy---------------------");
+// copy of object which is not connected to original object is Deep copy.
+let objt = {
+    name : "abhj", age: 27, city : "noida", country :"india"
+} 
+let object3 = {};
+for(let prop in objt){
+    object3[prop] = objt[prop]; 
+}
+object3.age = 60;
+console.log(objt)
+console.log(object3);
+
+console.log("--Json.stringify(), Json.parse() ----------------");
+// Json
+let objec = {
+    name : "Rohan",
+    age : 20,
+    address : {
+        houseNo : 123,
+        area : "sector 5", city : "Noida", pincode : 201301
+    },
+}
+console.log(objec);
+let datas  = JSON.stringify(objec); // json string
+console.log(datas);
+let copyObject = JSON.parse(datas);  // plain JS object
+copyObject.address.city = "new Delhi";
+console.log(objec);
+console.log(copyObject);
+
+
+
+
+
+
+
+
+
+
+
+
    
    
    
@@ -349,4 +490,3 @@ console.log(getMax);
   
 
   
-
