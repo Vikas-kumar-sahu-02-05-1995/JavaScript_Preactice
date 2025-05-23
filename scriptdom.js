@@ -138,7 +138,111 @@ console.log("as a js property");
     alert('you change the input to: '+ input.value);
   };
 
+//  3.  By Using Add Event Listner.
+  const buttones = document.getElementById('myButtones'); // corrected ID
+  const messages = document.getElementById('message');
+  
+  // Add an event listener to the button
+  buttones.addEventListener('click', function() {
+    messages.textContent = 'Button was clicked!';
+  });
+
+ // prevent default():-
+   const form = document.getElementById('myForm');
+   const result = document.getElementById('result');
+   form.addEventListener('submit', function(event){
+    event.preventDefault();
+    result.textContent = 'Form submission prevented!';
+   });
+
+  //  exception Handling in JS:-
+   try{
+    let result = 10 /0;
+    if(result === Infinity){
+      throw new Error("Division by zero is not allowed");
+    }
+    console.log(result);
+   }catch(error) {
+    console.error("An error occured:", error.message);
+   } finally {
+    console.log("Exeption completed.");
+   }
+
+ // exception example 2:-
+   function validateAge(){
+    const age = document.getElementById('ageInput').value;
+    const messaging = document.getElementById('message');
+    try{
+      if(!age){
+        throw new Error("Age is required.");
+      }
+      if(isNaN(age) || age<= 0)
+        throw new Error("Please enter a valid age.");
+      messaging.textContent = "Age is valid!";
+    }catch(err){
+       messaging.textContent = err.message;
+    } finally{
+      console.log("Validation attempt completed.");
+    }
+   }
+
+// //////////-------Asynchronous Code:- time taking code ---////////
+  // Asynchronous javaScript :- technique to handle asynchronous code without blocking normal execution of program.
+  //  Event loop:- monitor call stack, microtask que & callback queue.
+  // call stack:- LIFO(?last in first out)current executing instruction.
+  // synchronous:- execute code line by line.
+  // asynchronous:- execute at last. 
+  //1 non promised based:- a. setTimeOut, b. SetInterval,
+  //2 promised based:- a. promise
+//-------- EXAMPLE 1 Using setTimeout:----------------------///
+ console.log("start");
+ console.log("1");
+ console.log("2");
+ 
+ setTimeout(() => {
+  console.log("hi");
+  confirm("do u want to allow.");
+ }, 3000);
+ clearTimeout();
+ console.log("4");
+
+//example  -------------Using Promise --------////
+    function fetchData(){
+      return new Promise((resolve, reject) => {
+        setTimeout(() =>{
+          resolve("Data fetched successfully!");
+        }, 2000);
+      });
+    }
+
+    fetchData().then((data) =>{
+      console.log(data);
+    }).catch((err) =>{
+      console.log(err);
+    });
+
+//Example-------//   async/await -----------------///////////
+ function fetchData() {
+  return new Promise((resolve, reject) =>{
+    setTimeout(() =>{
+      resolve("Async/Await works great!");
+    }, 2000);
+  });
+ }
+
+ async function getData() {
+    console.log("fetching data...");
+    try{
+      const result = await fetchData();
+      console.log(result);
+    }catch(err){
+      console.log("Error: " , err);
+    }
+ }
+ getData();
 
  
 
 
+
+ 
